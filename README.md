@@ -2,16 +2,29 @@
 
 [Русская версия](README.ru.md)
 
-CLI and GitHub Action for repository health checks (tests, lint, dependencies).
+CLI and GitHub Action helper to quickly assess repository readiness.
 
-## Quick start
+## What it checks
+
+- `.git` exists
+- `README.md` exists
+- `pyproject.toml` exists
+- `tests/` exists
+- `.github/workflows/ci.yml` exists
+
+## Usage
 
 ```bash
-# Read CLI help
-# (examples may differ by project)
+python3 main.py --path .
+python3 main.py --path . --format json
+python3 main.py --path . --strict
 ```
 
-## Documentation
+## CI usage
 
-- See project files and workflow docs in this repository.
-- For Russian documentation, open `README.ru.md`.
+Use strict mode to fail builds when required repository hygiene checks are missing.
+
+## Exit codes
+
+- `0` scan completed (and strict checks passed)
+- `1` strict mode failed
