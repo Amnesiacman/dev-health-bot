@@ -1,22 +1,55 @@
 # dev-health-bot
 
-CLI and GitHub Action for repository health checks (tests, lint, deps).
+`dev-health-bot` проверяет базовое "здоровье" репозитория и помогает быстро увидеть,
+чего не хватает для нормального CI-ready процесса.
 
-## MVP status
+## Что проверяет v0.1
 
-- Basic CLI scaffold is ready (`main.py`).
-- Supports `--format text|json` and `--dry-run`.
-- Intended as a foundation for iterative feature work.
+- наличие `.git`
+- наличие `README.md`
+- наличие `pyproject.toml`
+- наличие директории `tests`
+- наличие `.github/workflows/ci.yml`
 
-## Quick start
+## Установка и запуск
+
+```bash
+python3 -m pip install -e .
+dev-health-bot --help
+```
+
+Локально без установки:
 
 ```bash
 python3 main.py --help
-python3 main.py --format json --dry-run
 ```
 
-## Next steps
+## Примеры
 
-1. Add domain-specific command set and config file support.
-2. Add tests and GitHub Actions workflow.
-3. Package and publish first tagged release.
+Текстовый отчет:
+
+```bash
+python3 main.py --path .
+```
+
+JSON для CI/скриптов:
+
+```bash
+python3 main.py --path . --format json
+```
+
+Строгий режим (exit code 1, если есть проваленные проверки):
+
+```bash
+python3 main.py --path . --strict
+```
+
+## Exit codes
+
+- `0`: отчет сформирован, в строгом режиме все проверки прошли
+- `1`: только для `--strict`, если есть проваленные проверки
+
+## GitHub Actions
+
+- `ci.yml`: запускает тесты и smoke-проверку репозитория
+- `release.yml`: создает GitHub Release при пуше тега `v*`
