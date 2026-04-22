@@ -1,5 +1,7 @@
 # dev-health-bot
 
+![CI](https://github.com/Amnesiacman/dev-health-bot/actions/workflows/ci.yml/badge.svg)
+
 `dev-health-bot` проверяет базовое "здоровье" репозитория и помогает быстро увидеть,
 чего не хватает для нормального CI-ready процесса.
 
