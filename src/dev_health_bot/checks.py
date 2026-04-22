@@ -47,4 +47,3 @@ def run_checks(target: Path) -> dict:
         "failed": len(failed),
         "checks": checks,
     }
-

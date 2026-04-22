@@ -15,4 +15,3 @@ def test_cli_json_output(tmp_path: Path, capsys):
 def test_cli_strict_mode_fails_on_unhealthy(tmp_path: Path):
     exit_code = main(["--strict", "--path", str(tmp_path)])
     assert exit_code == 1
-

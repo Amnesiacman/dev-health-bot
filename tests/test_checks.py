@@ -21,4 +21,3 @@ def test_report_ok_when_required_files_present(tmp_path: Path):
     report = run_checks(tmp_path)
     assert report["status"] == "ok"
     assert report["failed"] == 0
-

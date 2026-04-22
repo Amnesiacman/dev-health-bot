@@ -54,4 +54,3 @@ def main(argv=None) -> int:
     if args.strict and report["failed"] > 0:
         return 1
     return 0
-
